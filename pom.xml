@@ -18,77 +18,46 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <springBootSecurity.version>2.1.6.RELEASE</springBootSecurity.version>
-        <springBootNacosConfig.version>0.2.3</springBootNacosConfig.version>
-        <springCloudNacosConfig.version>2.1.0.RELEASE</springCloudNacosConfig.version>
-        <springCloudNacosDiscovery.version>2.1.0.RELEASE</springCloudNacosDiscovery.version>
+        <fastJson.version>1.2.47</fastJson.version>
+        <lombok.version>1.16.16</lombok.version>
         <swagger2.version>2.6.1</swagger2.version>
         <swaggerUI.version>2.6.1</swaggerUI.version>
         <googleAuth.version>1.2.0</googleAuth.version>
+
+        <cloudNacosConfig.version>2.1.0.RELEASE</cloudNacosConfig.version>
+        <cloudNacosDiscovery.version>2.1.0.RELEASE</cloudNacosDiscovery.version>
+        <cloudNacosClient.version>1.0.0</cloudNacosClient.version>
+
         <mysqlConnector.version>5.1.47</mysqlConnector.version>
         <springBootAutoconfigure.version>2.1.5.RELEASE</springBootAutoconfigure.version>
-        <fastJson.version>1.2.47</fastJson.version>
-        <lombok.version>1.16.16</lombok.version>
+
         <springBootWebSocket.version>5.1.6.RELEASE</springBootWebSocket.version>
         <springThymeleaf.version>2.1.3.RELEASE</springThymeleaf.version>
     </properties>
 
     <dependencies>
-
-         <!-- SpringSecurity模块 -->
+        <!-- SpringCloud Nacos依赖 配置文件:bootstrap-->
+        <!-- 配置管理-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-            <version>${springBootSecurity.version}</version>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+            <version>${cloudNacosConfig.version}</version>
         </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-security</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.security.oauth</groupId>-->
-<!--            <artifactId>spring-security-oauth2</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.security</groupId>-->
-<!--            <artifactId>spring-security-jwt</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.security.oauth.boot</groupId>-->
-<!--            <artifactId>spring-security-oauth2-autoconfigure</artifactId>-->
-<!--        </dependency>-->
-
-        <!--thymeleaf对security5的支持依赖-->
-        <dependency>
-            <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
-            <version>3.0.4.RELEASE</version>
-        </dependency>
-
-
-         <!-- SpringBoot Nacos依赖 配置文件:application -->
-        <dependency>
-            <groupId>com.alibaba.boot</groupId>
-            <artifactId>nacos-config-spring-boot-starter</artifactId>
-            <version>${springBootNacosConfig.version}</version>
-        </dependency>
-
-         <!-- SpringCloud Nacos依赖 配置文件:bootstrap -->
-        <!-- 配置管理 -->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
-<!--            <version>${springCloudNacosConfig.version}</version>-->
-<!--        </dependency>-->
         <!-- 服务发现 -->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
-<!--            <version>${springCloudNacosDiscovery.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <version>${cloudNacosDiscovery.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba.nacos/nacos-client -->
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-client</artifactId>
+            <version>${cloudNacosClient.version}</version>
+        </dependency>
 
-         <!-- SpringAop依赖 -->
+
+        <!-- SpringAop依赖 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
@@ -111,7 +80,7 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
-         <!-- swagger依赖 -->
+        <!-- swagger依赖 -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -123,22 +92,22 @@
             <version>${swaggerUI.version}</version>
         </dependency>
 
-         <!-- elasticSearch依赖 -->
-<!--        <dependency>-->
-<!--            <groupId>org.elasticsearch.client</groupId>-->
-<!--            <artifactId>transport</artifactId>-->
-<!--            <version>7.5.0</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.elasticsearch.client</groupId>-->
-<!--            <artifactId>elasticsearch-rest-high-level-client</artifactId>-->
-<!--            <version>7.5.0</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.elasticsearch</groupId>-->
-<!--            <artifactId>elasticsearch</artifactId>-->
-<!--            <version>7.5.0</version>-->
-<!--        </dependency>-->
+        <!-- elasticSearch依赖 -->
+        <!--        <dependency>-->
+        <!--            <groupId>org.elasticsearch.client</groupId>-->
+        <!--            <artifactId>transport</artifactId>-->
+        <!--            <version>7.5.0</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.elasticsearch.client</groupId>-->
+        <!--            <artifactId>elasticsearch-rest-high-level-client</artifactId>-->
+        <!--            <version>7.5.0</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.elasticsearch</groupId>-->
+        <!--            <artifactId>elasticsearch</artifactId>-->
+        <!--            <version>7.5.0</version>-->
+        <!--        </dependency>-->
 
         <!-- redis依赖 -->
         <dependency>
@@ -146,13 +115,13 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
         <!--springboot热部署工具(使用@Cacheable时会报cannot case exception)-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-devtools</artifactId>-->
-<!--            <optional>true</optional>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-devtools</artifactId>-->
+        <!--            <optional>true</optional>-->
+        <!--        </dependency>-->
 
-         <!-- google令牌依赖 -->
+        <!-- google令牌依赖 -->
         <dependency>
             <groupId>com.warrenstrange</groupId>
             <artifactId>googleauth</artifactId>
@@ -165,62 +134,55 @@
             <version>1.10</version>
         </dependency>
 
-         <!-- springbootJpa依赖 -->
+        <!-- springbootJpa依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-         <!-- springbootWeb依赖 -->
+        <!-- springbootWeb依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-         <!-- mysql驱动 -->
+        <!-- mysql驱动 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-             <!--    <version>5.1.47</version>-->
+            <!--    <version>5.1.47</version>-->
             <scope>runtime</scope>
         </dependency>
 
-         <!-- springboot单元测试 -->
+        <!-- springboot单元测试 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-         <!-- junit单元测试依赖 -->
+        <!-- junit单元测试依赖 -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
 
-         <!-- springboot自动配置依赖 -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-autoconfigure</artifactId>-->
-<!--            <version>${springBootAutoconfigure.version}</version>-->
-<!--        </dependency>-->
-
-         <!-- fastJson -->
+        <!-- fastJson -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastJson.version}</version>
         </dependency>
 
-         <!-- lombok工具 -->
+        <!-- lombok工具 -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
 
-         <!-- webSocket依赖 -->
+        <!-- webSocket依赖 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-websocket</artifactId>

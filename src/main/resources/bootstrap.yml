@@ -1,6 +1,7 @@
 crabapples:
-  aesKey: "crabapples"
-  token: "crabapples:token"
+  AES_KEY: "crabapples"
+  REDIS_PREFIX: "crabapples"
+  TOKEN_CACHE_TIME: 30
 
 server:
   port: 9090 #启动端口
@@ -12,7 +13,7 @@ spring:
   cloud:
     nacos:
       config:
-        server-addr: 'linux.crabapples.cn:8848'
+        server-addr: '192.168.3.20:8848'
         file-extension: yml
   profiles:
     active: dev #激活的配置文件

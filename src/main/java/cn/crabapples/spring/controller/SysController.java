@@ -41,9 +41,9 @@ public class SysController extends BaseController {
      * 进入登录页面
      * @return 返回登录页面html
      */
-    @GetMapping("/")
-    public String toIndex(){
-        logger.info("收到请求->进入主页");
+    @GetMapping("/toLoginPage")
+    public String toLoginPage(){
+        logger.info("收到请求->进入登录页面");
         return "login";
     }
 
@@ -51,7 +51,7 @@ public class SysController extends BaseController {
      * 进入主页面
      * @return 登录后的主页面
      */
-    @GetMapping("/index")
+    @GetMapping("/")
     public String index(){
         logger.info("收到请求->进入主页");
         return "index";
