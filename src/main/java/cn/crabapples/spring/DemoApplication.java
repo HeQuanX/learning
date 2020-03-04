@@ -37,7 +37,7 @@ public class DemoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
-        logger.info(">>>>>>>>服务启动成功>>>>>>>>>");
+        logger.info(">>>>>>>>SpringCloud服务启动成功>>>>>>>>>");
     }
     @LoadBalanced
     @Bean

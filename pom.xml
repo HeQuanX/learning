@@ -23,16 +23,14 @@
         <swagger2.version>2.6.1</swagger2.version>
         <swaggerUI.version>2.6.1</swaggerUI.version>
         <googleAuth.version>1.2.0</googleAuth.version>
+        <mysqlConnector.version>5.1.47</mysqlConnector.version>
+        <springThymeleaf.version>2.1.3.RELEASE</springThymeleaf.version>
 
+        <springBootWebSocket.version>5.1.6.RELEASE</springBootWebSocket.version>
         <cloudNacosConfig.version>2.1.0.RELEASE</cloudNacosConfig.version>
         <cloudNacosDiscovery.version>2.1.0.RELEASE</cloudNacosDiscovery.version>
         <cloudNacosClient.version>1.0.0</cloudNacosClient.version>
-
-        <mysqlConnector.version>5.1.47</mysqlConnector.version>
-        <springBootAutoconfigure.version>2.1.5.RELEASE</springBootAutoconfigure.version>
-
-        <springBootWebSocket.version>5.1.6.RELEASE</springBootWebSocket.version>
-        <springThymeleaf.version>2.1.3.RELEASE</springThymeleaf.version>
+        <bootSecurity.version>2.1.6.RELEASE</bootSecurity.version>
     </properties>
 
     <dependencies>
