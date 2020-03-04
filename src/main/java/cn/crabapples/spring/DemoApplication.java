@@ -37,7 +37,7 @@ public class DemoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
-        logger.info(">>>>>>>>SpringCloud服务启动成功 [nacos] [jpa] [springSecurity] >>>>>>>>>");
+        logger.info(">>>>>>>>SpringCloud服务启动成功 [nacos] [jpa]>>>>>>>>>");
     }
     @LoadBalanced
     @Bean
