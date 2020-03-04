@@ -39,7 +39,7 @@ public class DemoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
-        logger.info(">>>>>>>>SpringBoot服务启动成功>>>>>>>>>");
+        logger.info(">>>>>>>>SpringBoot服务启动成功 [nacos] [jpa] [springSecurity] >>>>>>>>>");
     }
     @Bean
     public RestTemplate restTemplate() {
