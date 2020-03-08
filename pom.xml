@@ -33,12 +33,6 @@
     </properties>
 
     <dependencies>
-        <!-- thymeleafShiro -->
-        <dependency>
-            <groupId>com.github.theborakompanioni</groupId>
-            <artifactId>thymeleaf-extras-shiro</artifactId>
-            <version>${thymeleafShiro.version}</version>
-        </dependency>
 
         <!-- shiroSpring -->
         <dependency>

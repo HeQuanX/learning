@@ -1,6 +1,5 @@
 package cn.crabapples.spring.common.config;
 
-import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
@@ -48,11 +47,9 @@ public class ShiroConfigure {
         filterMap.put("/X-admin/fonts/**","anon");
         filterMap.put("/X-admin/lib/**","anon");
 
-//        filterMap.put("/index","perms[]");
 
         shiroFilterFactory.setFilterChainDefinitionMap(filterMap);
         shiroFilterFactory.setLoginUrl("/");
-        shiroFilterFactory.setUnauthorizedUrl("/");
         return shiroFilterFactory;
     }
 
@@ -67,11 +64,4 @@ public class ShiroConfigure {
         return webSecurityManager;
     }
 
-    /**
-     *
-     */
-    @Bean
-    public ShiroDialect getShiroDialect (){
-        return new ShiroDialect();
-    }
 }

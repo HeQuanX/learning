@@ -76,7 +76,7 @@
         </a>
         <ul class="sub-menu">
           <!--生成一级目录-->
-          <li v-for="item in item.children" shiro:hasPermission="item.permission">
+          <li v-for="item in item.children">
             <a href="javascript:;" v-if="item.menuType === '1'">
               <i class="iconfont">&#xe70b;</i>
               <cite>{{item.name}}</cite>
