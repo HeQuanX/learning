@@ -1,8 +1,5 @@
 package cn.crabapples.spring;
 
-import com.alibaba.nacos.api.annotation.NacosProperties;
-import com.alibaba.nacos.spring.context.annotation.config.EnableNacosConfig;
-import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -32,14 +29,14 @@ import org.springframework.web.client.RestTemplate;
 
 @EnableJpaAuditing
 @SpringBootApplication
-@EnableNacosConfig(globalProperties = @NacosProperties(serverAddr = "192.168.3.20:8848"))
-@NacosPropertySource(dataId = "learn-dev.yml", autoRefreshed = true)
+//@EnableNacosConfig(globalProperties = @NacosProperties(serverAddr = "192.168.3.20:8848"))
+//@NacosPropertySource(dataId = "learn-dev.yml", autoRefreshed = true)
 public class DemoApplication {
     private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
-        logger.info(">>>>>>>>SpringBoot服务启动成功 [nacos] [jpa] [shiro] >>>>>>>>>");
+        logger.info(">>>>>>>>SpringBoot服务启动成功 [nacos] [jpa] [notShiro] >>>>>>>>>");
     }
     @Bean
     public RestTemplate restTemplate() {
