@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 
 @Controller
-public class TestController extends BaseController {
+public class TestPageController extends BaseController {
 
-    private Logger logger = LoggerFactory.getLogger(TestController.class);
+    private Logger logger = LoggerFactory.getLogger(TestPageController.class);
     private final String PREFIX = "crabapples/";
 
     @GetMapping("/welcome1")

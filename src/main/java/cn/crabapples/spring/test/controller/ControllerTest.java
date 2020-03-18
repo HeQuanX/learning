@@ -12,10 +12,15 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * TODO 一个演示的controller
@@ -33,10 +38,31 @@ public class ControllerTest extends BaseController {
 
     private static final Logger logger = LoggerFactory.getLogger(ControllerTest.class);
     private ServiceTest serviceTest;
+    private final RabbitTemplate rabbitTemplate;
 
-    public ControllerTest(ServiceTest serviceTest) {
+    public ControllerTest(ServiceTest serviceTest, RabbitTemplate rabbitTemplate) {
         this.serviceTest = serviceTest;
+        this.rabbitTemplate = rabbitTemplate;
     }
+
+    @GetMapping("/mq/send")
+    public ResponseDTO mqSend(@RequestParam String name){
+        Map<String,Object> map = new HashMap<>();
+        map.put("name","小明");
+        map.put("age",1);
+        map.put("amt",9.9);
+        map.put("time", LocalDateTime.now());
+        rabbitTemplate.convertAndSend(name,map);
+        return ResponseDTO.returnSuccess("消息发送成功");
+    }
+
+    @GetMapping("/mq/get")
+    public ResponseDTO mqGet(@RequestParam String name){
+        Message message = rabbitTemplate.receive(name);
+        System.err.println(message);
+        return ResponseDTO.returnSuccess("消息消费成功",message);
+    }
+
 
     @GetMapping("/hello")
     @ApiOperation(value = "hello,world测试", notes = "这个是一个测试接口")

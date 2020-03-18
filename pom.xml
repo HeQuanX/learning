@@ -33,6 +33,12 @@
     </properties>
 
     <dependencies>
+        <!--rabbitmq-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
         <!-- thymeleafShiro -->
         <dependency>
             <groupId>com.github.theborakompanioni</groupId>

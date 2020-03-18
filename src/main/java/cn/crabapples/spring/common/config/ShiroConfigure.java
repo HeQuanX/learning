@@ -65,6 +65,7 @@ public class ShiroConfigure {
         filterMap.put("/X-admin/images/**","anon");
         filterMap.put("/X-admin/fonts/**","anon");
         filterMap.put("/X-admin/lib/**","anon");
+        filterMap.put("/api/test/**","anon");
 
 //        filterMap.put("/index","perms[]");
 
