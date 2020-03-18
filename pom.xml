@@ -49,11 +49,11 @@
 
 
         <!-- SpringBoot Nacos依赖 配置文件:application -->
-        <dependency>
-            <groupId>com.alibaba.boot</groupId>
-            <artifactId>nacos-config-spring-boot-starter</artifactId>
-            <version>${bootNacosConfig.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.boot</groupId>-->
+<!--            <artifactId>nacos-config-spring-boot-starter</artifactId>-->
+<!--            <version>${bootNacosConfig.version}</version>-->
+<!--        </dependency>-->
 
         <!-- SpringAop依赖 -->
         <dependency>

@@ -4,7 +4,7 @@ crabapples:
   TOKEN_CACHE_TIME: 30
 
 server:
-  port: 9090 #启动端口
+  port: 9099 #启动端口
 #  servlet:
 #    context-path: /learn #应用名
 nacos:
