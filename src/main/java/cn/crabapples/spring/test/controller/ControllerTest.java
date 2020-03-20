@@ -53,6 +53,7 @@ public class ControllerTest extends BaseController {
         map.put("amt",9.9);
         map.put("time", LocalDateTime.now());
         rabbitTemplate.convertAndSend(name,map);
+        System.out.println(rabbitTemplate);
         return ResponseDTO.returnSuccess("消息发送成功");
     }
 
