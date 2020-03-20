@@ -35,7 +35,7 @@ public class RabbitmqSimpleQueueDemo {
      * @throws IOException      网络通信可能会出现异常
      * @throws TimeoutException 网络通信可能会出现异常
      */
-    public static Connection getConnection() throws TimeoutException, IOException {
+    private static Connection getConnection() throws TimeoutException, IOException {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(HOST);
         factory.setUsername(USERNAME);
