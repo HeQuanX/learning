@@ -23,26 +23,6 @@ public class RabbitmqSimpleQueueDemo {
      * 定义一个队列名
      */
     private static final String QUEUE_NAME = "test_simple_queue";
-    private static final String HOST = "192.168.3.20";
-    private static final String USERNAME = "crabapples";
-    private static final String PASSWORD = "crabapples";
-    private static final String VIRTUAL_HOST = "/crabapples";
-
-    /**
-     * 定义一个创建到rabbitmq服务器连接的方法
-     *
-     * @return 返回一个到rabbitmq连接
-     * @throws IOException      网络通信可能会出现异常
-     * @throws TimeoutException 网络通信可能会出现异常
-     */
-    private static Connection getConnection() throws TimeoutException, IOException {
-        ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost(HOST);
-        factory.setUsername(USERNAME);
-        factory.setPassword(PASSWORD);
-        factory.setVirtualHost(VIRTUAL_HOST);
-        return factory.newConnection();
-    }
 
     public static void main(String[] args) {
         /*
@@ -50,7 +30,7 @@ public class RabbitmqSimpleQueueDemo {
          */
         new Thread(() -> {
             try {
-                Connection connection = getConnection();
+                Connection connection = RabbitmqDemoConfigure.getConnection();
                 Channel channel = connection.createChannel();
                 /*
                  * ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
@@ -80,7 +60,7 @@ public class RabbitmqSimpleQueueDemo {
          */
         new Thread(() -> {
             try {
-                Connection connection = getConnection();
+                Connection connection = RabbitmqDemoConfigure.getConnection();
                 Channel channel = connection.createChannel();
                 /*
                  * ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
