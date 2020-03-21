@@ -1,7 +1,7 @@
 package cn.crabapples.demo;
 
 /**
- * TODO JVM启动时加上参数-ea可显式检查assert后面的表达式是否成立
+ * TODO 断言演示,JVM启动时加上参数-ea可显式检查assert后面的表达式是否成立
  *
  * @author Mr.He
  * 2019/9/19 22:23
