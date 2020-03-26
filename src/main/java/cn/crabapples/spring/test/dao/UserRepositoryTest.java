@@ -1,6 +1,6 @@
 package cn.crabapples.spring.test.dao;
 
-import cn.crabapples.spring.entity.SysUser;
+import cn.crabapples.spring.system.entity.SysUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
