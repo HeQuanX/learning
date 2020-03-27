@@ -1,0 +1,619 @@
+<!doctype html>
+<html class="x-admin-sm"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+>
+<head>
+  <title>X-admin</title>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <header data-th-include="common :: meta"></header>
+  <header data-th-replace="common :: javascript"></header>
+  <header data-th-replace="common :: style"></header>
+  <script>
+    // 是否开启刷新记忆tab功能
+    // var is_remember = false;
+  </script>
+</head>
+<body class="index">
+<!-- 顶部开始 -->
+<div class="container">
+  <div class="logo">
+    <a href="./X-admin/index.html">X-admin v2.2</a></div>
+  <div class="left_open">
+    <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
+  </div>
+  <ul class="layui-nav left fast-add" lay-filter="">
+    <li class="layui-nav-item">
+      <a href="javascript:;">+新增</a>
+      <dl class="layui-nav-child">
+        <!-- 二级菜单 -->
+        <dd>
+          <a onclick="xadmin.open('最大化','http://www.baidu.com','','',true)">
+            <i class="iconfont">&#xe6a2;</i>弹出最大化</a></dd>
+        <dd>
+          <a onclick="xadmin.open('弹出自动宽高','http://www.baidu.com')">
+            <i class="iconfont">&#xe6a8;</i>弹出自动宽高</a></dd>
+        <dd>
+          <a onclick="xadmin.open('弹出指定宽高','http://www.baidu.com',500,300)">
+            <i class="iconfont">&#xe6a8;</i>弹出指定宽高</a></dd>
+        <dd>
+          <a onclick="xadmin.add_tab('在tab打开','member-list.html')">
+            <i class="iconfont">&#xe6b8;</i>在tab打开</a></dd>
+        <dd>
+          <a onclick="xadmin.add_tab('在tab打开刷新','member-del.html',true)">
+            <i class="iconfont">&#xe6b8;</i>在tab打开刷新</a></dd>
+      </dl>
+    </li>
+  </ul>
+  <ul class="layui-nav right" lay-filter="">
+    <li class="layui-nav-item">
+      <a href="javascript:;">admin</a>
+      <dl class="layui-nav-child">
+        <!-- 二级菜单 -->
+        <dd>
+          <a onclick="xadmin.open('个人信息','http://www.baidu.com')">个人信息</a></dd>
+        <dd>
+          <a onclick="xadmin.open('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
+        <dd>
+          <a href="./X-admin/login.html">退出</a></dd>
+      </dl>
+    </li>
+    <li class="layui-nav-item to-index">
+      <a href="/">前台首页</a></li>
+  </ul>
+</div>
+<!-- 顶部结束 -->
+<!-- 中部开始 -->
+<!-- 左侧菜单开始 -->
+<div class="left-nav" id="sys-menus">
+  <div id="side-nav">
+    <ul id="nav">
+      <li v-for="item in menus">
+        <a href="javascript:;">
+          <i class="iconfont left-nav-li">&#xe6b8;</i>
+          <cite>{{item.name}}</cite>
+          <i class="iconfont nav_right">&#xe697;</i>
+        </a>
+        <ul class="sub-menu">
+          <!--生成一级目录-->
+          <li v-for="item in item.children" >
+            <a href="javascript:;" v-if="item.menuType === '1'">
+              <i class="iconfont">&#xe70b;</i>
+              <cite>{{item.name}}</cite>
+              <i class="iconfont nav_right">&#xe697;</i>
+            </a>
+            <ul class="sub-menu" v-if="item.menuType === '1'">
+              <!-- 生成二级目录 -->
+              <li v-for="item in item.children">
+                <a @click="menuOnClick(item.name, item.url)">
+                  <i class="iconfont">&#xe6a7;</i>
+                  <cite>{{item.name}}</cite></a>
+              </li>
+            </ul>
+            <!-- 生成菜单 -->
+            <a @click="menuOnClick(item.name, item.url)" v-if="item.menuType === '2'">
+              <i class="iconfont">&#xe6a7;</i>
+              <cite>{{item.name}}</cite>
+            </a>
+            <!-- 生成链接 -->
+            <a :href="item.url" target="_blank" v-if="item.menuType === '3'">
+              <i class="iconfont">&#xe6a7;</i>
+              <cite>{{item.name}}</cite>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- <div class="x-slide_left"></div> -->
+<!-- 左侧菜单结束 -->
+<!-- 右侧主体开始 -->
+<div class="page-content">
+  <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
+    <ul class="layui-tab-title">
+      <li class="home">
+        <i class="layui-icon">&#xe68e;</i>我的桌面
+      </li>
+    </ul>
+    <div class="layui-unselect layui-form-select layui-form-selected" id="tab_right">
+      <dl>
+        <dd data-type="this">关闭当前</dd>
+        <dd data-type="other">关闭其它</dd>
+        <dd data-type="all">关闭全部</dd>
+      </dl>
+    </div>
+    <div class="layui-tab-content">
+      <div class="layui-tab-item layui-show">
+        <iframe data-th-src='@{/X-admin/welcome.html}' frameborder="0" scrolling="yes"
+                class="x-iframe"></iframe>
+      </div>
+    </div>
+    <div id="tab_show"></div>
+  </div>
+</div>
+<div class="page-content-bg"></div>
+<style id="theme_style"></style>
+<!-- 右侧主体结束 -->
+<!-- 中部结束 -->
+</body>
+<script>
+  let vue = new Vue({
+    el: '#sys-menus',
+    data() {
+      return {
+        isDebug: false,
+        menus: [],
+        menusDemo: [
+          {
+            id: '',
+            icon: '&#xe6b8;',
+            name: '会员管理',
+            children: [
+              // {
+              //   icon: '&#xe6a7;',
+              //   name: '统计页面',
+              //   url: '/demo11',
+              //   menuType: '2',
+              //   onclick: (name, url) => {
+              //     xadmin.add_tab(name, url)
+              //   },
+              // },
+              // {
+              //   icon: '&#xe6a7;',
+              //   name: '统计页面',
+              //   url: '/welcome1',
+              //   menuType: '2',
+              //   onclick: (name, url) => {
+              //     xadmin.add_tab(name, url)
+              //   },
+              // },
+              // {
+              //   icon: '&#xe6a7;',
+              //   name: '会员列表(静态表格)',
+              //   url: '/memberList',
+              //   menuType: 2,
+              //   onclick: (name, url) => {
+              //     xadmin.add_tab(name, url)
+              //   },
+              // },
+              // {
+              //   icon: '&#xe6a7;',
+              //   name: '会员列表(动态表格)',
+              //   url: '/memberList1',
+              //   menuType: 2,
+              //   onclick: (name, url) => {
+              //     xadmin.add_tab(name, url)
+              //   },
+              // },
+              {
+                icon: '&#xe6a7;',
+                name: '会员删除',
+                url: '/memberDel',
+                menuType: 2,
+                onclick: (name, url) => {
+                  xadmin.add_tab(name, url)
+                },
+              },
+              {
+                icon: '&#xe6a7;',
+                name: '会员管理',
+                url: '/memberEdit',
+                menuType: '1',
+                onclick: (name, url) => {
+                  xadmin.add_tab(name, url)
+                },
+                children: [
+                  {
+                    icon: '&#xe6a7;',
+                    name: '会员删除',
+                    url: 'member-del.html',
+                    menuType: '2',
+                    onclick: (name, url) => {
+                      xadmin.add_tab(name, url)
+                    },
+                  },
+                  {
+                    icon: '&#xe6a7;',
+                    name: '等级管理',
+                    url: 'member-list1.html',
+                    menuType: '2',
+                    onclick: (name, url) => {
+                      xadmin.add_tab(name, url)
+                    },
+                  },
+                ]
+              },
+            ]
+          },
+          // {
+          //   id: '',
+          //   icon: '&#xe723;',
+          //   name: '订单管理',
+          //   children: [
+          //     {
+          //       id: '',
+          //       icon: '&#xe6a7;',
+          //       name: '订单列表',
+          //       url: 'order-list.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '订单列表1',
+          //       url: 'order-list1.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //   ]
+          // },
+          // {
+          //   icon: '&#xe723;',
+          //   name: '分类管理',
+          //   children: [
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '多级分类',
+          //       url: 'cate.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //   ]
+          // },
+          // {
+          //   icon: '&#xe723;',
+          //   name: '城市联动',
+          //   children: [
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '三级地区联动',
+          //       url: 'city.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //   ]
+          // },
+          // {
+          //   icon: '&#xe723;',
+          //   name: '管理员管理',
+          //   children: [
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '管理员列表',
+          //       url: 'admin-list.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '角色管理',
+          //       url: 'admin-role.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '权限分类',
+          //       url: 'admin-cate.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '权限管理',
+          //       url: 'admin-rule.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //   ]
+          // },
+          // {
+          //   icon: '&#xe723;',
+          //   name: '系统统计',
+          //   children: [
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '折线图',
+          //       url: 'echarts1.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '折线图',
+          //       url: 'echarts2.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '地图',
+          //       url: 'echarts3.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '饼图',
+          //       url: 'echarts4.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '雷达图',
+          //       url: 'echarts5.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: 'K线图',
+          //       url: 'echarts6.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '热力图',
+          //       url: 'echarts7.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '仪表图',
+          //       url: 'echarts8.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //
+          //   ]
+          // },
+          // {
+          //   icon: '&#xe6b4;',
+          //   name: '图标字体',
+          //   children: [
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '图标对应字体',
+          //       url: 'unicode.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //   ]
+          // },
+          // {
+          //   icon: '&#xe6b4;',
+          //   name: '其他页面',
+          //   children: [
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '登录页面',
+          //       url: 'login.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '错误页面',
+          //       url: 'error.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '示例页面',
+          //       url: 'demo.html',
+          //       menuType: 2,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '更新日志',
+          //       url: 'log.html',
+          //       isTree: false,
+          //       isMenu: true,
+          //       isLink: false,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //   ]
+          // },
+          // {
+          //   icon: '&#xe6b4;',
+          //   name: '第三方组件',
+          //   children: [
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '滑块验证',
+          //       url: 'https://fly.layui.com/extend/sliderVerify/',
+          //       isTree: false,
+          //       isMenu: false,
+          //       isLink: true,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '富文本编辑器',
+          //       url: 'https://fly.layui.com/extend/layedit/',
+          //       isTree: false,
+          //       isMenu: true,
+          //       isLink: false,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: 'eleTree组件',
+          //       url: 'https://fly.layui.com/extend/eleTree/',
+          //       isTree: false,
+          //       isMenu: true,
+          //       isLink: false,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '图片截取',
+          //       url: 'https://fly.layui.com/extend/croppers/',
+          //       isTree: false,
+          //       isMenu: true,
+          //       isLink: false,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: '图片截取',
+          //       url: 'https://fly.layui.com/extend/eleTree/',
+          //       isTree: false,
+          //       isMenu: true,
+          //       isLink: false,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: ' formSelects 4.x 多选框',
+          //       url: 'https://fly.layui.com/extend/formSelects/',
+          //       isTree: false,
+          //       isMenu: true,
+          //       isLink: false,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: 'Magnifier 放大镜',
+          //       url: 'https://fly.layui.com/extend/Magnifier/',
+          //       isTree: false,
+          //       isMenu: true,
+          //       isLink: false,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //     {
+          //       icon: '&#xe6a7;',
+          //       name: 'notice 通知控件',
+          //       url: 'https://fly.layui.com/extend/notice/',
+          //       isTree: false,
+          //       isMenu: true,
+          //       isLink: false,
+          //       onclick: (name, url) => {
+          //         xadmin.add_tab(name, url)
+          //       },
+          //     },
+          //   ]
+          // },
+        ]
+      }
+    },
+    mounted() {
+      if (this.isDebug) {
+        this.menus = this.menusDemo
+      } else {
+        this.getMenus()
+      }
+    },
+    methods: {
+      getMenus() {
+        const _this = this
+        axios.get('/getSysMenus').then(response => {
+          const result = response.data
+          if (result.status !== 200) {
+            layer.msg(result.message)
+            return
+          }
+          _this.menus = this.createMenus(result.data).sort((a, b) => {return a.sort - b.sort})
+          console.log(JSON.stringify(_this.menus))
+
+        }).catch(function (error) {
+          // 请求失败处理
+          console.log(error);
+        });
+      },
+      createMenus(arrays) {
+        // console.log(arrays)
+        let menus = []
+        arrays.forEach(e => {
+              menus.push({
+                id: `${e.id}`,
+                sort: `${e.sort}`,
+                icon: `${e.icon}`,
+                name: `${e.name}`,
+                url: `/view${e.url}`,
+                menuType: `${e.menuType}`,
+                permission:`${e.permission}`,
+                level:`${e.level}`,
+                children: this.createMenus(e.children).sort((a, b) => {
+                  return a.sort - b.sort
+                }),
+                onclick: (name, url) => {
+                  xadmin.add_tab(name, url)
+                },
+              })
+            }
+        )
+        return menus
+      },
+
+      menuOnClick(name, url) {
+        console.log('用户点击了菜单--->',name, url)
+        xadmin.add_tab(name, url)
+      }
+    }
+  })
+</script>
+
+</html>

@@ -24,8 +24,8 @@ public interface SysService {
     ResponseDTO login(UserForm form);
 
     /**
-     * 获取系统菜单
-     * @return
+     * 获取当前用户系统菜单
+     * @return 当前用户拥有的菜单
      */
     List<SysMenu> getSysMenus(SysUser user);
 }

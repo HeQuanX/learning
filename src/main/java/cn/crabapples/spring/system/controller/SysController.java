@@ -10,7 +10,10 @@ import cn.crabapples.spring.system.service.SysService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.SecurityUtils;
+<<<<<<< HEAD:src/main/java/cn/crabapples/spring/system/controller/SysController.java
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+=======
+>>>>>>> cf9c3256dbf50c1620eeaec4a4f648745556d2b2:src/main/java/cn/crabapples/spring/controller/SysController.java
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;

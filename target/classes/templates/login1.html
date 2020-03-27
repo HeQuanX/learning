@@ -1,0 +1,59 @@
+<!doctype html>
+<html class="x-admin-sm">
+<head>
+  <title>后台登录-X-admin2.2</title>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" data-th-href="@{/X-admin/css/login.css}">
+  <header data-th-include="common :: meta"></header>
+  <header data-th-replace="common :: javascript"></header>
+  <header data-th-replace="common :: style"></header>
+</head>
+<body class="login-bg">
+<div class="login layui-anim layui-anim-up">
+  <div class="message">x-admin2.0-管理登录</div>
+  <div id="darkbannerwrap"></div>
+  <form method="post" class="layui-form" id="loginForm">
+    <input name="username" autocomplete="off" lay-verify="required" class="layui-input"
+           placeholder="用户名" type="text" value="111">
+    <hr class="hr15">
+    <input name="password" autocomplete="off" lay-verify="required" class="layui-input"
+           placeholder="密码" type="password" value="12345">
+    <hr class="hr15">
+    <input lay-submit lay-filter="login" style="width:100%;" type="button" value="登录">
+    <hr class="hr20">
+  </form>
+</div>
+
+<script>
+  layui.use('form', function () {
+    let form = layui.form;
+    layer.msg('玩命卖萌中', function () {
+      //关闭后的操作
+    });
+    //监听提交
+    form.on('submit(login)', function (data) {
+      let loginForm = JSON.stringify($('#loginForm').serializeObject())
+      console.log(loginForm)
+      $.ajax({
+        url: '/login',
+        data: loginForm,
+        type: 'post',
+        dataType: 'json',
+        contentType: 'application/json',
+        success:(result)=>{
+          // console.log(result)
+        }
+
+      })
+      // layer.msg(JSON.stringify(loginForm))
+
+      // layer.msg(JSON.stringify(data.field), function () {
+      //     location.href = 'index.html'
+      // });
+      return false;
+    });
+  });
+</script>
+<!-- 底部结束 -->
+</body>
+</html>

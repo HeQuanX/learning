@@ -1,7 +1,10 @@
 package cn.crabapples.spring.system.common;
 
 import cn.crabapples.spring.system.dto.ResponseDTO;
+<<<<<<< HEAD:src/main/java/cn/crabapples/spring/system/common/BaseController.java
 import org.apache.shiro.authz.UnauthorizedException;
+=======
+>>>>>>> cf9c3256dbf50c1620eeaec4a4f648745556d2b2:src/main/java/cn/crabapples/spring/common/BaseController.java
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

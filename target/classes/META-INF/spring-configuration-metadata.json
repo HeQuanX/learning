@@ -1,0 +1,36 @@
+{
+  "groups": [
+    {
+      "name": "crabapples",
+      "type": "cn.crabapples.spring.system.common.config.ApplicationConfigure",
+      "sourceType": "cn.crabapples.spring.system.common.config.ApplicationConfigure"
+    }
+  ],
+  "properties": [
+    {
+      "name": "crabapples.a-e-s-k-e-y",
+      "type": "java.lang.String",
+      "description": "aesKey种子",
+      "sourceType": "cn.crabapples.spring.system.common.config.ApplicationConfigure"
+    },
+    {
+      "name": "crabapples.r-e-d-i-s-p-r-e-f-i-x",
+      "type": "java.lang.String",
+      "description": "redis缓存前缀",
+      "sourceType": "cn.crabapples.spring.system.common.config.ApplicationConfigure"
+    },
+    {
+      "name": "crabapples.s-a-l-t",
+      "type": "java.lang.String",
+      "description": "MD5加密盐值",
+      "sourceType": "cn.crabapples.spring.system.common.config.ApplicationConfigure"
+    },
+    {
+      "name": "crabapples.t-o-k-e-n-c-a-c-h-e-t-i-m-e",
+      "type": "java.lang.Long",
+      "description": "token缓存时间",
+      "sourceType": "cn.crabapples.spring.system.common.config.ApplicationConfigure"
+    }
+  ],
+  "hints": []
+}

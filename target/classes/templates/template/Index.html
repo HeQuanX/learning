@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title>测试</title>
+	<script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+	<style>
+		* {
+			margin: 0;
+		}
+		.out-div {
+			width: 80%;
+			height: 30em;
+			/*background-color: lightpink;*/
+			margin: 10em auto;
+			text-align: center;
+		}
+		.text {
+			line-height: 10em;
+			font-size: 3em;
+			color: red;
+		}
+	</style>
+</head>
+<body>
+<div id="app">
+	<div class="out-div">
+		<p class="text">
+			<span>距离2020年还剩{{tiem}}秒</span>
+		</p>
+	</div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {return {tiem: 'Hello world'}},
+        mounted() {
+		        this.tiem = ((new moment('2020-01-24 00:00:00').valueOf() - new moment().valueOf())/1000).toFixed(0)
+            setInterval(()=>{this.tiem--}, 1000);
+        },
+    })
+</script>
+</html>

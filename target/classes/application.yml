@@ -1,0 +1,39 @@
+crabapples:
+  AES_KEY: crabapples
+  REDIS_PREFIX: crabapples
+  TOKEN_CACHE_TIME: 30
+  SALT: crabapples
+
+server:
+  port: 9099 #启动端口
+#  servlet:
+#    context-path: /learn #应用名
+nacos:
+  config:
+    server-addr: '192.168.3.20:8848'
+spring:
+  application:
+    name: learn
+  profiles:
+    active: dev #激活的配置文件
+  jpa:
+    show-sql: false #是否在控制台显示数据库语句
+    hibernate:
+      ddl-auto: update #每次启动时如何操作对应表
+    database-platform: org.hibernate.dialect.MySQL8Dialect #设置jpa方言为mysql
+  thymeleaf:
+    prefix: classpath:templates/ #thymeleaf模板引擎路径
+#    suffix: .html #thymeleaf模板后缀
+    cache: false
+    mode: HTML5
+  cache:
+    jedis:
+      pool:
+        max-active: 10
+    redis:
+      time-to-live: 60000
+
+logging:
+  pattern:
+    level: info
+

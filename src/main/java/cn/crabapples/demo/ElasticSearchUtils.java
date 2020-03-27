@@ -1,4 +1,4 @@
-//package Mr.He.demo;
+package cn.crabapples.demo;//package Mr.He.demo;
 //
 //import org.apache.http.HttpHost;
 //import org.elasticsearch.action.index.IndexResponse;

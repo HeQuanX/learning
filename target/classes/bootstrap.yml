@@ -1,0 +1,38 @@
+crabapples:
+  aesKey: "crabapples"
+  token: "crabapples:token"
+
+server:
+  port: 9090 #启动端口
+#  servlet:
+#    context-path: /learn #应用名
+spring:
+  application:
+    name: learn
+  cloud:
+    nacos:
+      config:
+        server-addr: 'linux.crabapples.cn:8848'
+        file-extension: yml
+  profiles:
+    active: dev #激活的配置文件
+  jpa:
+    show-sql: true #是否在控制台显示数据库语句
+    hibernate:
+      ddl-auto: update #每次启动时如何操作对应表
+    database-platform: org.hibernate.dialect.MySQL8Dialect #设置jpa方言为mysql
+  thymeleaf:
+    prefix: classpath:templates/ #thymeleaf模板引擎路径
+    #suffix: .html #thymeleaf模板后缀
+    cache: false
+  cache:
+    jedis:
+      pool:
+        max-active: 10
+    redis:
+      time-to-live: 60000
+
+logging:
+  pattern:
+    level: info
+

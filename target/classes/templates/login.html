@@ -1,0 +1,65 @@
+<!doctype html>
+<html class="x-admin-sm">
+<head>
+  <title>后台登录-X-admin2.2</title>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" data-th-href="@{/X-admin/css/login.css}">
+  <header data-th-include="common :: meta"></header>
+  <header data-th-replace="common :: javascript"></header>
+  <header data-th-replace="common :: style"></header>
+</head>
+<body class="login-bg">
+<div class="login layui-anim layui-anim-up">
+  <div class="message">x-admin2.0-管理登录</div>
+  <div id="darkbannerwrap"></div>
+  <form method="post" class="layui-form" id="loginForm">
+    <input name="username" autocomplete="off" lay-verify="required" class="layui-input"
+           placeholder="用户名" type="text">
+    <hr class="hr15">
+    <input name="password" autocomplete="off" lay-verify="required" class="layui-input"
+           placeholder="密码" type="password">
+    <hr class="hr15">
+    <input lay-submit lay-filter="login" style="width:100%;" type="button" value="登录">
+    <hr class="hr20">
+  </form>
+</div>
+
+<script>
+  layui.use('form', function () {
+    let form = layui.form;
+    layer.msg('玩命卖萌中', function () {
+      //弹窗关闭后的操作
+    });
+    //layUi监听提交
+    form.on('submit(login)', function (data) {
+      let loginForm = $('#loginForm').serializeObject()
+      vue.login(loginForm)
+      return false;
+    });
+  });
+  let vue = new Vue({
+    el: '#loginForm',
+    methods: {
+      login(data) {
+        console.log(data)
+        axios.post('/login', data).then(response => {
+          const result = response.data
+          console.log(result)
+          if (result.status !== 200) {
+            layer.msg(result.message)
+            return
+          }
+          layer.msg(result.message)
+          window.location.href = '/index'
+        }).catch(exception => {
+          layer.msg('系统错误')
+          console.error('系统错误', exception)
+        })
+      }
+
+    }
+  })
+</script>
+<!-- 底部结束 -->
+</body>
+</html>

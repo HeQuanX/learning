@@ -1,0 +1,39 @@
+isDebug: false
+dadaBaseUrl: '192.168.3.20'
+dataBaseDriveV8: 'com.mysql.cj.jdbc.Driver'
+dataBaseDriveV5: 'com.mysql.jdbc.Driver'
+dataBaseParam: 'useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull&allowPublicKeyRetrieval=true'
+
+spring :
+  redis:
+    host: 192.168.3.20
+    port: 6379
+    password: crabapples
+    database: 0
+    jedis:
+      pool:
+        max-active: 10
+  datasource:
+    driverClassName: ${dataBaseDriveV8} #数据库驱动
+    url: jdbc:mysql://${dadaBaseUrl}:3306/learn?useSSL=false&${dataBaseParam} #数据库地址
+    username: learn #数据库用户名
+    password: learn #数据库密码
+  #    dbcp2:
+  #      driver-class-name: ${dataBaseDriveV8}
+  #      url: jdbc:mysql://${dadaBaseUrl}:3306/learn?useSSL=false&${dataBaseParam} #数据库地址
+  #      username: learn #数据库用户名
+  #      password: learn #数据库密码
+  ##      max-conn-lifetime-millis: 10
+  ##      validation-query-timeout: 1
+  #      initial-size: 20
+  #      max-idle: 50
+  #      min-idle: 20
+  #      max-wait-millis: 10
+  #      max-total: 90
+  #      remove-abandoned-timeout: 2
+  #      test-on-borrow: true
+  #      validation-query: SELECT 1
+
+
+  #    type: com.alibaba.druid.pool.DruidDataSource
+  #    driverClassName: com.mysql.jdbc.Driver
