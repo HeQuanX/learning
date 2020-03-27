@@ -1,6 +1,6 @@
 package cn.crabapples.spring.test.service.impl;
 
-import cn.crabapples.spring.entity.SysUser;
+import cn.crabapples.spring.system.entity.SysUser;
 import cn.crabapples.spring.test.service.UserServiceTest;
 import cn.crabapples.spring.test.dao.UserRepositoryTest;
 import org.springframework.stereotype.Service;
