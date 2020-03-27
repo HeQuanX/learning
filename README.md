@@ -22,7 +22,7 @@
 * 20191227
     * 加入抽象工厂模式测试 `cn.crabapples.pattern23.factoey.abstractFactory.*`
 * 20200117
-    * 加入swagger测试 `cn.crabapples.spring.common.config.Swagger2Configure.java`
+    * 加入swagger测试 `cn.crabapples.spring.system.common.config.Swagger2Configure.java`
 * 20200127
     * 加入jpa测试crud 
 * 20200129
@@ -42,9 +42,9 @@
       * Linux下默认的算法是“NativePRNG”
       * windows下默认是“SHA1PRNG”（sun提供的算法)
 * 20200303
-    * 修改springCache配置,缓存至redis乱码问题`cn.crabapples.spring.common.config.RedisTemplateConfigure.java`
+    * 修改springCache配置,缓存至redis乱码问题`cn.crabapples.spring.system.common.config.RedisTemplateConfigure.java`
 * 20200304
-    * 修改BaseController,统一异常处理返回json格式数据`cn.crabapples.spring.common.BaseController.java`
+    * 修改BaseController,统一异常处理返回json格式数据`cn.crabapples.spring.system.common.BaseController.java`
     * 前端模板加入form序列化工具`src/main/resources/static/js/common.js`
     * 前端模板加入thymeleaf公共代码`src/main/resources/templates/common.html`
     * 登陆返回数据修改为json格式`src/main/resources/templates/common.html`

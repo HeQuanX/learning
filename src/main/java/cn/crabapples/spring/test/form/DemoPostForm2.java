@@ -1,7 +1,7 @@
 package cn.crabapples.spring.test.form;
 
-import cn.crabapples.spring.common.groups.IsNotNull;
-import cn.crabapples.spring.common.groups.IsNull;
+import cn.crabapples.spring.system.common.groups.IsNotNull;
+import cn.crabapples.spring.system.common.groups.IsNull;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Setter;
 

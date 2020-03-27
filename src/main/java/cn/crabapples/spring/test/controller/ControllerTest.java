@@ -1,9 +1,9 @@
 package cn.crabapples.spring.test.controller;
 
-import cn.crabapples.spring.common.BaseController;
-import cn.crabapples.spring.common.groups.IsNotNull;
-import cn.crabapples.spring.common.groups.IsNull;
-import cn.crabapples.spring.dto.ResponseDTO;
+import cn.crabapples.spring.system.common.BaseController;
+import cn.crabapples.spring.system.common.groups.IsNotNull;
+import cn.crabapples.spring.system.common.groups.IsNull;
+import cn.crabapples.spring.system.dto.ResponseDTO;
 import cn.crabapples.spring.test.form.DemoPostForm1;
 import cn.crabapples.spring.test.form.DemoPostForm2;
 import cn.crabapples.spring.test.service.ServiceTest;

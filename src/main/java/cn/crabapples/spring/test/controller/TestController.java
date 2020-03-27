@@ -1,6 +1,6 @@
 package cn.crabapples.spring.test.controller;
 
-import cn.crabapples.spring.common.BaseController;
+import cn.crabapples.spring.system.common.BaseController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;

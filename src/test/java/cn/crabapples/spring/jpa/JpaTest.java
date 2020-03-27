@@ -1,10 +1,10 @@
 package cn.crabapples.spring.jpa;
 
-import cn.crabapples.spring.dao.SysMenuRepository;
-import cn.crabapples.spring.entity.SysMenu;
-import cn.crabapples.spring.entity.SysRole;
-import cn.crabapples.spring.entity.SysUser;
-import cn.crabapples.spring.service.UserService;
+import cn.crabapples.spring.system.dao.SysMenuRepository;
+import cn.crabapples.spring.system.entity.SysMenu;
+import cn.crabapples.spring.system.entity.SysRole;
+import cn.crabapples.spring.system.entity.SysUser;
+import cn.crabapples.spring.system.service.UserService;
 import cn.crabapples.spring.test.service.UserServiceTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +14,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * TODO jpa测试类
