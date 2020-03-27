@@ -1,4 +1,4 @@
-package cn.crabapples.spring.system.common.config;
+package cn.crabapples.spring.crabapples.common.config;
 
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;

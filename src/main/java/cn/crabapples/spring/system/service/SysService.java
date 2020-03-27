@@ -25,7 +25,7 @@ public interface SysService {
 
     /**
      * 获取系统菜单
-     * @return
+     * @return 当前用户拥有的菜单
      */
     List<SysMenu> getSysMenus(SysUser user);
 }

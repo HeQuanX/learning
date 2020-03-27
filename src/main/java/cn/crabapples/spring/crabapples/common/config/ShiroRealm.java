@@ -1,4 +1,4 @@
-package cn.crabapples.spring.system.common.config;
+package cn.crabapples.spring.crabapples.common.config;
 
 import cn.crabapples.spring.system.entity.SysUser;
 import cn.crabapples.spring.system.service.UserService;
