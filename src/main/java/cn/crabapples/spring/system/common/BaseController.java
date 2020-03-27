@@ -39,7 +39,7 @@ public abstract class BaseController {
     @ExceptionHandler
     @ResponseBody
     protected ResponseDTO exceptionHandler(Exception e){
-        logger.error("出现异常:[{}]",e.getMessage(),e);
+        logger.error("出现异常:[{}]",e.getMessage());
         return ResponseDTO.returnError("操作失败",e.getMessage());
     }
 }

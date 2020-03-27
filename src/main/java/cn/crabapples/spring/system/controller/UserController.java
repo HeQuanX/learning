@@ -5,7 +5,11 @@ import cn.crabapples.spring.system.common.groups.IsAdd;
 import cn.crabapples.spring.system.common.groups.IsEdit;
 import cn.crabapples.spring.system.common.groups.IsStatusChange;
 import cn.crabapples.spring.system.dto.ResponseDTO;
+<<<<<<< HEAD:src/main/java/cn/crabapples/spring/system/controller/UserController.java
 import cn.crabapples.spring.system.entity.User;
+=======
+import cn.crabapples.spring.system.entity.SysUser;
+>>>>>>> cf9c3256dbf50c1620eeaec4a4f648745556d2b2:src/main/java/cn/crabapples/spring/controller/UserController.java
 import cn.crabapples.spring.system.form.UserForm;
 import cn.crabapples.spring.system.service.UserService;
 import io.swagger.annotations.Api;
@@ -42,7 +46,7 @@ public class UserController extends BaseController {
     public ResponseDTO addUser(@RequestBody UserForm form){
         logger.info("收到请求->添加用户:[{}]",form);
         super.validator(form, IsAdd.class);
-        User user = userService.addUser(form);
+        SysUser user = userService.addUser(form);
         logger.info("用户添加完成->用户信息:[{}]",user);
         return ResponseDTO.returnSuccess("操作成功",user);
     }
@@ -52,7 +56,7 @@ public class UserController extends BaseController {
     public ResponseDTO editUser(@RequestBody UserForm form){
         logger.info("收到请求->修改用户:[{}]",form);
         super.validator(form, IsEdit.class);
-        User user = userService.editUser(form);
+        SysUser user = userService.editUser(form);
         logger.info("用户修改完成->用户信息:[{}]",user);
         return ResponseDTO.returnSuccess("操作成功",user);
     }

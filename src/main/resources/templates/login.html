@@ -14,10 +14,10 @@
   <div id="darkbannerwrap"></div>
   <form method="post" class="layui-form" id="loginForm">
     <input name="username" autocomplete="off" lay-verify="required" class="layui-input"
-           placeholder="用户名" type="text" value="111">
+           placeholder="用户名" type="text">
     <hr class="hr15">
     <input name="password" autocomplete="off" lay-verify="required" class="layui-input"
-           placeholder="密码" type="password" value="12345">
+           placeholder="密码" type="password">
     <hr class="hr15">
     <input lay-submit lay-filter="login" style="width:100%;" type="button" value="登录">
     <hr class="hr20">
@@ -44,13 +44,15 @@
         console.log(data)
         axios.post('/login', data).then(response => {
           const result = response.data
-          if(result.status !== 200){
-            layer.msg('登录失败')
+          console.log(result)
+          if (result.status !== 200) {
+            layer.msg(result.message)
             return
           }
-          layer.msg('登录成功，页面跳转')
-          console.log(result)
+          layer.msg(result.message)
+          window.location.href = '/index'
         }).catch(exception => {
+          layer.msg('系统错误')
           console.error('系统错误', exception)
         })
       }

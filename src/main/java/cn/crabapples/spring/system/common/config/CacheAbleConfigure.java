@@ -35,7 +35,7 @@ public class CacheAbleConfigure extends CachingConfigurerSupport {
 
     @Bean
     public CacheManager cacheManager() {
-          FastJsonRedisSerializer<Object> fastJsonRedisSerializer = new FastJsonRedisSerializer<>(Object.class);
+        FastJsonRedisSerializer<Object> fastJsonRedisSerializer = new FastJsonRedisSerializer<>(Object.class);
         RedisCacheConfiguration configuration = RedisCacheConfiguration.defaultCacheConfig();
         configuration = configuration.serializeValuesWith(RedisSerializationContext.SerializationPair
                 .fromSerializer(fastJsonRedisSerializer))

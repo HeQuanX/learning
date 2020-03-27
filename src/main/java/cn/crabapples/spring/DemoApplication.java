@@ -36,7 +36,11 @@ public class DemoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
+<<<<<<< HEAD
         logger.info(">>>>>>>>SpringBoot服务启动成功 [nacos] [jpa] [springSecurity] >>>>>>>>>");
+=======
+        logger.info(">>>>>>>>SpringBoot服务启动成功 [nacos] [jpa] [notShiro] >>>>>>>>>");
+>>>>>>> cf9c3256dbf50c1620eeaec4a4f648745556d2b2
     }
     @Bean
     public RestTemplate restTemplate() {

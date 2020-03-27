@@ -4,17 +4,21 @@ import cn.crabapples.spring.system.common.BaseController;
 import cn.crabapples.spring.system.common.groups.IsLogin;
 import cn.crabapples.spring.system.dto.ResponseDTO;
 import cn.crabapples.spring.system.entity.SysMenu;
+<<<<<<< HEAD:src/main/java/cn/crabapples/spring/system/controller/SysController.java
+=======
+import cn.crabapples.spring.system.entity.SysUser;
+>>>>>>> cf9c3256dbf50c1620eeaec4a4f648745556d2b2:src/main/java/cn/crabapples/spring/controller/SysController.java
 import cn.crabapples.spring.system.form.UserForm;
 import cn.crabapples.spring.system.service.SysService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * TODO 系统相关接口
@@ -48,6 +52,22 @@ public class SysController extends BaseController {
     }
 
     /**
+     * 发起登录请求
+     * @param form 用户名和密码
+     * @return 登录成功返回token
+     */
+    @PostMapping("/login")
+    @ResponseBody
+    @ApiOperation(value = "用户登陆", notes = "用户登陆接口")
+    public ResponseDTO login(@RequestBody UserForm form){
+        logger.info("收到请求->用户登陆验证:[{}]",form);
+        super.validator(form, IsLogin.class);
+        ResponseDTO responseDTO = sysService.login(form);
+        logger.info("登录验证结束->用户信息:[{}]",responseDTO);
+        return responseDTO;
+    }
+
+    /**
      * 进入主页面
      * @return 登录后的主页面
      */
@@ -58,31 +78,15 @@ public class SysController extends BaseController {
     }
 
     /**
-     * 发起登录请求
-     * @param form 用户名和密码
-     * @return 登录成功返回token
-     */
-    @PostMapping("/login")
-    @ResponseBody
-    @ApiOperation(value = "用户登陆", notes = "用户登陆接口")
-    public ResponseDTO login(@RequestBody UserForm form){
-        logger.info("收到请求->用户登陆:[{}]",form);
-        super.validator(form, IsLogin.class);
-        Map<String,String> tokenInfo = sysService.login(form);
-        logger.info("登录成功->用户信息:[{}]",tokenInfo);
-        return ResponseDTO.returnSuccess("操作成功",tokenInfo);
-    }
-
-    /**
      * 获取系统菜单
-     * @param auth 登录授权信息
      * @return 返回当前用户拥有的系统菜单
      */
     @GetMapping("/getSysMenus")
     @ResponseBody
-    public ResponseDTO getSysMenus(String auth){
-        logger.info("收到请求->获取菜单列表");
-        List<SysMenu> menus = sysService.getSysMenus(auth);
+    public ResponseDTO getSysMenus(){
+        SysUser user = (SysUser) SecurityUtils.getSubject().getPrincipal();
+        logger.info("收到请求->获取用户[{}]的菜单列表",user.getId());
+        List<SysMenu> menus = sysService.getSysMenus(user);
         logger.info("获取菜单列表成功:[{}]",menus);
         return ResponseDTO.returnSuccess("操作成功",menus);
     }

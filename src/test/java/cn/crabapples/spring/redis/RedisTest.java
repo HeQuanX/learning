@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -25,7 +26,7 @@ import java.util.concurrent.TimeUnit;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class RedisTest {
     @Autowired
-    RedisTemplate redisTemplate;
+    StringRedisTemplate redisTemplate;
     @Test
     public void case1(){
         System.err.println(redisTemplate.opsForValue().setIfAbsent("crabapples","hello,world",3, TimeUnit.MINUTES));

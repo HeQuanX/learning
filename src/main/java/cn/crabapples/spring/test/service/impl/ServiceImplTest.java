@@ -1,6 +1,6 @@
 package cn.crabapples.spring.test.service.impl;
 
-import cn.crabapples.spring.test.service.DemoService;
+import cn.crabapples.spring.test.service.ServiceTest;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,5 +13,5 @@ import org.springframework.stereotype.Service;
  * pc-name 29404
  */
 @Service
-public class DemoServiceImpl implements DemoService {
+public class ServiceImplTest implements ServiceTest {
 }

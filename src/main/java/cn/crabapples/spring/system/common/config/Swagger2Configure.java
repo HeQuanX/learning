@@ -1,5 +1,6 @@
 package cn.crabapples.spring.system.common.config;
 
+import io.swagger.annotations.Api;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -32,7 +33,10 @@ public class Swagger2Configure {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage(SWAGGER_SCAN_BASE_PACKAGE))
+                //根据包扫描
+//                .apis(RequestHandlerSelectors.basePackage(SWAGGER_SCAN_BASE_PACKAGE))
+                //根据注解扫描
+                .apis(RequestHandlerSelectors.withMethodAnnotation(Api.class))
                 .paths(PathSelectors.any()) // 可以根据url路径设置哪些请求加入文档，忽略哪些请求
                 .build();
     }

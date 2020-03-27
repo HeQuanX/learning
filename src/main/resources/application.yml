@@ -1,7 +1,8 @@
 crabapples:
-  AES_KEY: "crabapples"
-  REDIS_PREFIX: "crabapples"
+  AES_KEY: crabapples
+  REDIS_PREFIX: crabapples
   TOKEN_CACHE_TIME: 30
+  SALT: crabapples
 
 server:
   port: 9099 #启动端口
@@ -16,7 +17,7 @@ spring:
   profiles:
     active: dev #激活的配置文件
   jpa:
-    show-sql: true #是否在控制台显示数据库语句
+    show-sql: false #是否在控制台显示数据库语句
     hibernate:
       ddl-auto: update #每次启动时如何操作对应表
     database-platform: org.hibernate.dialect.MySQL8Dialect #设置jpa方言为mysql

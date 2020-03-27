@@ -22,7 +22,6 @@ public class TestController extends BaseController {
     private Logger logger = LoggerFactory.getLogger(TestController.class);
     private final String PREFIX = "crabapples/";
 
-
     @GetMapping("/welcome1")
     public String welcome1(){
         logger.info("收到请求->welcome1");

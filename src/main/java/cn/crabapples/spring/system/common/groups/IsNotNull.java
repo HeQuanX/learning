@@ -1,7 +1,7 @@
 package cn.crabapples.spring.system.common.groups;
 
 /**
- * TODO 用于属性校验的校验组
+ * TODO 用于属性校验的校验组 不能为空
  *
  * @author Mr.He
  * 2019/9/21 21:11

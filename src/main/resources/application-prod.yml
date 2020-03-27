@@ -1,4 +1,4 @@
-isDebug: true
+isDebug: false
 dadaBaseUrl: '192.168.3.20'
 dataBaseDriveV8: 'com.mysql.cj.jdbc.Driver'
 dataBaseDriveV5: 'com.mysql.jdbc.Driver'

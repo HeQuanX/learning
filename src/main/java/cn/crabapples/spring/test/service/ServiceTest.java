@@ -9,5 +9,5 @@ package cn.crabapples.spring.test.service;
  * qq 294046317
  * pc-name 29404
  */
-public interface DemoService {
+public interface ServiceTest {
 }
