@@ -1,4 +1,4 @@
-package cn.crabapples.spring.crabapples.service.impl;
+package cn.crabapples.spring.system.service.impl;
 
 import cn.crabapples.spring.system.common.config.ApplicationConfigure;
 import cn.crabapples.spring.system.dao.SysMenuRepository;
