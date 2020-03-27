@@ -26,7 +26,7 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
-    private UserRepository userRepository;
+    private cn.crabapples.spring.system.dao.UserRepository userRepository;
 
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -38,45 +38,45 @@ public class UserServiceImpl implements UserService {
      * @return 查询到的用户
      */
     @Override
-    public Optional<SysUser> findByUsername(String username) {
+    public Optional<cn.crabapples.spring.system.entity.SysUser> findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
     @Override
-    public SysUser addUser(UserForm form) {
+    public cn.crabapples.spring.system.entity.SysUser addUser(cn.crabapples.spring.system.form.UserForm form) {
         return userRepository.save(form.toEntity());
     }
 
     @Override
-    public SysUser editUser(UserForm form) {
-        SysUser user = userRepository.findById(form.getId()).orElse(null);
+    public cn.crabapples.spring.system.entity.SysUser editUser(UserForm form) {
+        cn.crabapples.spring.system.entity.SysUser user = userRepository.findById(form.getId()).orElse(null);
         if (user != null) {
             return userRepository.save(form.toEntity());
         }
-        throw new ApplicationException("用户不存在");
+        throw new cn.crabapples.spring.system.common.ApplicationException("用户不存在");
     }
 
     @Override
     @Transactional
     public void delUser(String id) {
-        SysUser user = userRepository.findById(id).orElse(null);
+        cn.crabapples.spring.system.entity.SysUser user = userRepository.findById(id).orElse(null);
         if (user == null) {
-            throw new ApplicationException("用户不存在");
+            throw new cn.crabapples.spring.system.common.ApplicationException("用户不存在");
         }
         userRepository.delUser(id);
     }
 
     @Override
-    public List<SysUser> findByName(String name) {
+    public List<cn.crabapples.spring.system.entity.SysUser> findByName(String name) {
         return userRepository.findByName(name);
     }
 
     @Override
     @Transactional
     public void unActiveUser(String id) {
-        SysUser user = userRepository.findById(id).orElse(null);
+        cn.crabapples.spring.system.entity.SysUser user = userRepository.findById(id).orElse(null);
         if (user == null) {
-            throw new ApplicationException("用户不存在");
+            throw new cn.crabapples.spring.system.common.ApplicationException("用户不存在");
         }
         userRepository.unActiveUser(id);
     }
@@ -84,7 +84,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void activeUser(String id) {
-        SysUser user = userRepository.findById(id).orElse(null);
+        cn.crabapples.spring.system.entity.SysUser user = userRepository.findById(id).orElse(null);
         if (user == null) {
             throw new ApplicationException("用户不存在");
         }
@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<SysUser> findAll() {
+    public List<cn.crabapples.spring.system.entity.SysUser> findAll() {
         logger.info("开始获取所有用户");
         return userRepository.findAll();
     }

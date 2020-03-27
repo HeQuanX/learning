@@ -23,9 +23,9 @@ import java.util.Map;
  */
 @Configuration
 public class ShiroConfigure {
-    ShiroRealm shiroRealm;
+    cn.crabapples.spring.system.common.config.ShiroRealm shiroRealm;
 
-    public ShiroConfigure(ShiroRealm shiroRealm) {
+    public ShiroConfigure(cn.crabapples.spring.system.common.config.ShiroRealm shiroRealm) {
         this.shiroRealm = shiroRealm;
     }
 

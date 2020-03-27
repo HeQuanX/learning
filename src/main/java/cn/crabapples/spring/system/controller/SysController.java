@@ -33,7 +33,7 @@ import java.util.List;
 public class SysController extends BaseController {
 
     private Logger logger = LoggerFactory.getLogger(UserController.class);
-    private SysService sysService;
+    private cn.crabapples.spring.system.service.SysService sysService;
 
     public SysController(SysService sysService) {
         this.sysService = sysService;
@@ -57,10 +57,10 @@ public class SysController extends BaseController {
     @PostMapping("/login")
     @ResponseBody
     @ApiOperation(value = "用户登陆", notes = "用户登陆接口")
-    public ResponseDTO login(@RequestBody UserForm form){
+    public cn.crabapples.spring.system.dto.ResponseDTO login(@RequestBody UserForm form){
         logger.info("收到请求->用户登陆验证:[{}]",form);
         super.validator(form, IsLogin.class);
-        ResponseDTO responseDTO = sysService.login(form);
+        cn.crabapples.spring.system.dto.ResponseDTO responseDTO = sysService.login(form);
         logger.info("登录验证结束->用户信息:[{}]",responseDTO);
         return responseDTO;
     }
@@ -82,8 +82,8 @@ public class SysController extends BaseController {
      */
     @GetMapping("/getSysMenus")
     @ResponseBody
-    public ResponseDTO getSysMenus(){
-        SysUser user = (SysUser) SecurityUtils.getSubject().getPrincipal();
+    public cn.crabapples.spring.system.dto.ResponseDTO getSysMenus(){
+        cn.crabapples.spring.system.entity.SysUser user = (SysUser) SecurityUtils.getSubject().getPrincipal();
         logger.info("收到请求->获取用户[{}]的菜单列表",user.getId());
         List<SysMenu> menus = sysService.getSysMenus(user);
         logger.info("获取菜单列表成功:[{}]",menus);
