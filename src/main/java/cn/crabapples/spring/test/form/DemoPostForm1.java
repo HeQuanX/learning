@@ -1,4 +1,4 @@
-package cn.crabapples.spring.system.form;
+package cn.crabapples.spring.test.form;
 
 import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.ApiModel;

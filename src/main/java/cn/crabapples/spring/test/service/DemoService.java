@@ -1,4 +1,4 @@
-package cn.crabapples.spring.system.service;
+package cn.crabapples.spring.test.service;
 
 /**
  * TODO

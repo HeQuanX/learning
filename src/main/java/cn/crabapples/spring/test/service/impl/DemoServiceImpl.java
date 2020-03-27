@@ -1,6 +1,6 @@
-package cn.crabapples.spring.system.service.impl;
+package cn.crabapples.spring.test.service.impl;
 
-import cn.crabapples.spring.system.service.DemoService;
+import cn.crabapples.spring.test.service.DemoService;
 import org.springframework.stereotype.Service;
 
 /**

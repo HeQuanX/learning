@@ -1,12 +1,9 @@
-package cn.crabapples.spring.system.controller;
+package cn.crabapples.spring.test.controller;
 
 import cn.crabapples.spring.system.common.BaseController;
 import cn.crabapples.spring.system.dto.ResponseDTO;
-import cn.crabapples.spring.system.form.DemoPostForm1;
-import cn.crabapples.spring.system.form.DemoPostForm2;
 import cn.crabapples.spring.system.groups.IsNotNull;
 import cn.crabapples.spring.system.groups.IsNull;
-import cn.crabapples.spring.system.service.DemoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;

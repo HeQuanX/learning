@@ -1,4 +1,4 @@
-package cn.crabapples.spring.system.controller;
+package cn.crabapples.spring.test.controller;
 
 import cn.crabapples.spring.system.common.BaseController;
 import org.slf4j.Logger;

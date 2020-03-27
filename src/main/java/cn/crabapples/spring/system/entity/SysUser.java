@@ -1,7 +1,7 @@
 package cn.crabapples.spring.system.entity;
 
 import cn.crabapples.spring.system.common.BaseEntity;
-import cn.crabapples.spring.system.groups.IsNotNull;
+import cn.crabapples.spring.system.common.groups.IsNotNull;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,12 +23,11 @@ import javax.validation.constraints.NotNull;
  * Table name = "user" 设置表名为 user
  */
 @Entity
-@Table(name = "user")
 @Getter
 @Setter
-public class User extends BaseEntity {
-    public User() {}
-    public User(String name, Integer age) {
+public class SysUser extends BaseEntity {
+    public SysUser() {}
+    public SysUser(String name, Integer age) {
         this.name = name;
         this.age = age;
     }
