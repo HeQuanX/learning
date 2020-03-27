@@ -25,6 +25,7 @@
         <googleAuth.version>1.2.0</googleAuth.version>
         <mysqlConnector.version>5.1.47</mysqlConnector.version>
         <springThymeleaf.version>2.1.3.RELEASE</springThymeleaf.version>
+        <mail.version>1.4.7</mail.version>
 
         <springBootWebSocket.version>5.1.6.RELEASE</springBootWebSocket.version>
         <bootNacosConfig.version>0.2.3</bootNacosConfig.version>
@@ -33,6 +34,13 @@
     </properties>
 
     <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>${mail.version}</version>
+        </dependency>
 
         <!-- shiroSpring -->
         <dependency>
