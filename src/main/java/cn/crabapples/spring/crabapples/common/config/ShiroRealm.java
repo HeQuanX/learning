@@ -1,14 +1,8 @@
-<<<<<<< HEAD:src/main/java/cn/crabapples/spring/system/common/config/ShiroRealm.java
-package cn.crabapples.spring.system.common.config;
+package cn.crabapples.spring.crabapples.common.config;
 
 import cn.crabapples.spring.system.entity.SysMenu;
 import cn.crabapples.spring.system.entity.SysUser;
 import cn.crabapples.spring.system.service.SysService;
-=======
-package cn.crabapples.spring.crabapples.common.config;
-
-import cn.crabapples.spring.system.entity.SysUser;
->>>>>>> cf9c3256dbf50c1620eeaec4a4f648745556d2b2:src/main/java/cn/crabapples/spring/crabapples/common/config/ShiroRealm.java
 import cn.crabapples.spring.system.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -19,12 +13,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 
-<<<<<<< HEAD:src/main/java/cn/crabapples/spring/system/common/config/ShiroRealm.java
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-=======
->>>>>>> cf9c3256dbf50c1620eeaec4a4f648745556d2b2:src/main/java/cn/crabapples/spring/crabapples/common/config/ShiroRealm.java
 
 /**
  * TODO shiro配置
@@ -39,9 +33,11 @@ import java.util.stream.Collectors;
 public class ShiroRealm extends AuthorizingRealm {
     private static final Logger logger = LoggerFactory.getLogger(ShiroRealm.class);
     private UserService userService;
+    private final SysService sysService;
 
-    public ShiroRealm(UserService userService) {
+    public ShiroRealm(UserService userService, SysService sysService) {
         this.userService = userService;
+        this.sysService = sysService;
     }
 
     /**
@@ -49,7 +45,6 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-<<<<<<< HEAD:src/main/java/cn/crabapples/spring/system/common/config/ShiroRealm.java
         SysUser user = (SysUser) principalCollection.getPrimaryPrincipal();
         List<SysMenu> menus = sysService.getSysMenus(user);
         Set<String> permissions = getPermissions(menus).stream().filter(Objects::nonNull).collect(Collectors.toSet());
@@ -71,11 +66,7 @@ public class ShiroRealm extends AuthorizingRealm {
         });
         return permissions;
     }
-=======
-        return null;
-    }
 
->>>>>>> cf9c3256dbf50c1620eeaec4a4f648745556d2b2:src/main/java/cn/crabapples/spring/crabapples/common/config/ShiroRealm.java
     /**
      * shiro认证调用的方法,认证失败时会抛出异常
      *  IncorrectCredentialsException密码错误

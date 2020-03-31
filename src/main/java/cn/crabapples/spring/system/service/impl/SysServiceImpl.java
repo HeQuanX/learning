@@ -19,12 +19,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD:src/main/java/cn/crabapples/spring/system/service/impl/SysServiceImpl.java
-import java.util.*;
-=======
-import java.util.ArrayList;
 import java.util.List;
->>>>>>> cf9c3256dbf50c1620eeaec4a4f648745556d2b2:src/main/java/cn/crabapples/spring/service/impl/SysServiceImpl.java
+
 
 /**
  * TODO 系统相关服务实现类

@@ -4,7 +4,21 @@ dataBaseDriveV8: 'com.mysql.cj.jdbc.Driver'
 dataBaseDriveV5: 'com.mysql.jdbc.Driver'
 dataBaseParam: 'useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull&allowPublicKeyRetrieval=true'
 
+mail:
+  host: 'smtp.qq.com'
+  username: 'xxxxx@qq.com'
+  password: 'xxxxx'
+  source: 'xxxxx@qq.com'
+  port: '465'
+  isAuth: true
+  isDebug: true
 spring :
+  rabbitmq:
+    host: 192.168.3.20
+    port: 5672
+    username: crabapples
+    password: crabapples
+    virtual-host: /crabapples
   redis:
     host: 192.168.3.20
     port: 6379

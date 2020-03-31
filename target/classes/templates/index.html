@@ -65,7 +65,7 @@
 <!-- 顶部结束 -->
 <!-- 中部开始 -->
 <!-- 左侧菜单开始 -->
-<div class="left-nav" id="sys-menus">
+<div class="left-nav">
   <div id="side-nav">
     <ul id="nav">
       <li v-for="item in menus">
@@ -76,7 +76,11 @@
         </a>
         <ul class="sub-menu">
           <!--生成一级目录-->
+<<<<<<< HEAD
           <li v-for="item in item.children" >
+=======
+          <li v-for="item in item.children">
+>>>>>>> cf9c3256dbf50c1620eeaec4a4f648745556d2b2
             <a href="javascript:;" v-if="item.menuType === '1'">
               <i class="iconfont">&#xe70b;</i>
               <cite>{{item.name}}</cite>
@@ -139,7 +143,7 @@
 </body>
 <script>
   let vue = new Vue({
-    el: '#sys-menus',
+    el: '#side-nav',
     data() {
       return {
         isDebug: false,
@@ -592,7 +596,7 @@
                 sort: `${e.sort}`,
                 icon: `${e.icon}`,
                 name: `${e.name}`,
-                url: `/view${e.url}`,
+                url: `${e.url}`,
                 menuType: `${e.menuType}`,
                 permission:`${e.permission}`,
                 level:`${e.level}`,

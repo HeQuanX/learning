@@ -1,13 +1,8 @@
-<<<<<<< HEAD:src/main/java/cn/crabapples/spring/system/common/config/ShiroConfigure.java
-package cn.crabapples.spring.system.common.config;
+package cn.crabapples.spring.crabapples.common.config;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
-=======
-package cn.crabapples.spring.crabapples.common.config;
-
->>>>>>> cf9c3256dbf50c1620eeaec4a4f648745556d2b2:src/main/java/cn/crabapples/spring/crabapples/common/config/ShiroConfigure.java
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
@@ -16,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  * TODO shiro配置类
@@ -28,9 +24,9 @@ import java.util.Map;
  */
 @Configuration
 public class ShiroConfigure {
-    cn.crabapples.spring.system.common.config.ShiroRealm shiroRealm;
+    ShiroRealm shiroRealm;
 
-    public ShiroConfigure(cn.crabapples.spring.system.common.config.ShiroRealm shiroRealm) {
+    public ShiroConfigure(ShiroRealm shiroRealm) {
         this.shiroRealm = shiroRealm;
     }
 
@@ -75,7 +71,6 @@ public class ShiroConfigure {
 
         shiroFilterFactory.setFilterChainDefinitionMap(filterMap);
         shiroFilterFactory.setLoginUrl("/");
-<<<<<<< HEAD:src/main/java/cn/crabapples/spring/system/common/config/ShiroConfigure.java
         /*
          * ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
          * 认证失败跳转的页面
@@ -84,8 +79,6 @@ public class ShiroConfigure {
          * ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
          */
         shiroFilterFactory.setUnauthorizedUrl("/");
-=======
->>>>>>> cf9c3256dbf50c1620eeaec4a4f648745556d2b2:src/main/java/cn/crabapples/spring/crabapples/common/config/ShiroConfigure.java
         return shiroFilterFactory;
     }
 
@@ -98,8 +91,6 @@ public class ShiroConfigure {
     public ShiroDialect getShiroDialect (){
         return new ShiroDialect();
     }
-
-<<<<<<< HEAD:src/main/java/cn/crabapples/spring/system/common/config/ShiroConfigure.java
 
     /*
      * 配置以下两个bean(DefaultAdvisorAutoProxyCreator和AuthorizationAttributeSourceAdvisor)即可实现此功能
@@ -125,6 +116,4 @@ public class ShiroConfigure {
         advisor.setSecurityManager(securityManager);
         return advisor;
     }
-=======
->>>>>>> cf9c3256dbf50c1620eeaec4a4f648745556d2b2:src/main/java/cn/crabapples/spring/crabapples/common/config/ShiroConfigure.java
 }
