@@ -14,7 +14,7 @@
     <properties>
         <springBootWebSocket.version>5.1.6.RELEASE</springBootWebSocket.version>
         <bootNacosConfig.version>0.2.3</bootNacosConfig.version>
-        <shiro.version>1.4.0</shiro.version>
+        <shiro.version>1.7.0</shiro.version>
         <thymeleafShiro.version>2.0.0</thymeleafShiro.version>
     </properties>
 
